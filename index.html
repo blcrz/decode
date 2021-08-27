@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>decode</title>
+</head>
+
+<body>
+    <header>
+       <img src="https://image.flaticon.com/icons/png/512/2105/2105124.png"/> decode
+    </header>
+    <main >
+        <form class="container">
+            <h3>Escolha uma das opções de cifra para sua mensagem</h3>
+            <section class="escolha">
+                <select name="select" >
+                    <option value="valor0" disabled selected>Escolha a cifra</option>
+                    <option value="valor1">Cifra de César</option>
+                    <option value="valor2">base64</option>
+                  </select>
+                <div class="cifra">
+                    <input type="radio" id="op" name="opcao" value="cod">
+                    <label for="html">Codificar</label>
+                </div>
+                <div class="cifra">
+                    <input type="radio" id="op" name="opcao" value="decod">
+                    <label for="op">Decodificar</label>
+                </div>
+            </section>
+
+            <section class="mensagem">
+                <textarea class="campo" name="boxtext" placeholder="Digite aqui sua mensagem" rows="10" cols="33"></textarea>
+                <textarea class="campo" name="boxtext" rows="10" cols="33"></textarea>
+            </section>
+            <input id="button" type="submit" value="Aplicar" onclick="">
+        </form>
+    </main>
+    <script src="./js/decodificar.js"></script>
+</body>
+
+</html>
