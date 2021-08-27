@@ -25,10 +25,14 @@ header img{
     border-radius: 10px;
     justify-content: center;
 }
-select{
+#select{
     font-family: "IBM Plex Sans Thai";
     margin: 10px;
     width: 30%;
+}
+#incremento{
+    font-family: "IBM Plex Sans Thai";
+    margin: 10px;
 }
 .cifra{
     margin: 10px 50px;
@@ -48,7 +52,7 @@ select{
     display: flex;
     width: 100%;
 }
-.campo{
+#campo{
     resize: none;
     font-family: "IBM Plex Sans Thai";
     font-size: 20px;
@@ -57,4 +61,17 @@ select{
     border: none;
     width: 50%;
     box-shadow: -4px 7px 20px 1px grey;
+}
+#resultado{
+    resize: none;
+    font-family: "IBM Plex Sans Thai";
+    font-size: 20px;
+    margin: 25px 25px;
+    border-radius: 10px;
+    border: none;
+    width: 50%;
+    box-shadow: -4px 7px 20px 1px grey;
+}
+.hidden{
+    display: none;
 }

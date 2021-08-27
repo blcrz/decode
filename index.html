@@ -17,29 +17,31 @@
         <form class="container">
             <h3>Escolha uma das opções de cifra para sua mensagem</h3>
             <section class="escolha">
-                <select name="select" >
+                <select name="select" id="select">
                     <option value="valor0" disabled selected>Escolha a cifra</option>
-                    <option value="valor1">Cifra de César</option>
-                    <option value="valor2">base64</option>
+                    <option value="cifra">Cifra de César</option>
+                    <option value="base">base64</option>
                   </select>
+                  <input class="hidden" id="incremento" placeholder = "Insira o Incremento">
                 <div class="cifra">
-                    <input type="radio" id="op" name="opcao" value="cod">
+                    <input type="radio" id="cod" name="opcao" value="cod">
                     <label for="html">Codificar</label>
                 </div>
                 <div class="cifra">
-                    <input type="radio" id="op" name="opcao" value="decod">
+                    <input type="radio" id="decode" name="opcao" value="decod">
                     <label for="op">Decodificar</label>
                 </div>
             </section>
 
             <section class="mensagem">
-                <textarea class="campo" name="boxtext" placeholder="Digite aqui sua mensagem" rows="10" cols="33"></textarea>
-                <textarea class="campo" name="boxtext" rows="10" cols="33"></textarea>
+                <textarea id="campo" name="boxtext" placeholder="Digite aqui sua mensagem" rows="10" cols="33"></textarea>
+                <textarea id="resultado" name="boxtext" rows="10" cols="33"></textarea>
             </section>
-            <input id="button" type="submit" value="Aplicar" onclick="">
+            <input id="button" type="submit" value="Code" onclick="">
         </form>
     </main>
     <script src="./js/decodificar.js"></script>
 </body>
 
 </html>
+
