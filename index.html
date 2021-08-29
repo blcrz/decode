@@ -22,14 +22,14 @@
                     <option value="cifra">Cifra de César</option>
                     <option value="base">base64</option>
                   </select>
-                  <input class="hidden" id="incremento" placeholder = "Insira o Incremento">
+                  <input class="hidden" id="incremento" type="number" placeholder = "Insira o Incremento">
                 <div class="cifra">
-                    <input type="radio" id="cod" name="opcao" value="cod">
-                    <label for="html">Codificar</label>
+                    <input checked type="radio" id="cod" name="opcao">
+                    <label for="opcao">Codificar</label>
                 </div>
                 <div class="cifra">
-                    <input type="radio" id="decode" name="opcao" value="decod">
-                    <label for="op">Decodificar</label>
+                    <input type="radio" id="decode" name="opcao">
+                    <label for="opcao">Decodificar</label>
                 </div>
             </section>
 
@@ -41,6 +41,7 @@
         </form>
     </main>
     <script src="./js/decodificar.js"></script>
+
 </body>
 
 </html>
