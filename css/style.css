@@ -17,11 +17,13 @@ header img{
     flex-direction: column;
     align-items: center;
 }
+.container h3{
+    margin: 0px;
+}
 .escolha{
     display: flex;
     padding: 2%;
     width: 60%;
-    margin: 10px;
     border-radius: 10px;
     justify-content: center;
 }
@@ -43,16 +45,21 @@ header img{
     border: none;
     background: rgb(108, 186, 229);
     color: #e6e8e6;
-    padding: 5px;
-    font-size: 15px;
+    padding: 10px 0px;
+    font-size: 20px;
     font-family: "IBM Plex Sans Thai";
     font-weight: bold;
+    cursor: pointer;
+    margin: 15px
+}
+#button:active{
+    box-shadow: inset 0 0 5px white;
 }
 .mensagem{
     display: flex;
     width: 100%;
 }
-#campo{
+.box{
     resize: none;
     font-family: "IBM Plex Sans Thai";
     font-size: 20px;
@@ -62,16 +69,64 @@ header img{
     width: 50%;
     box-shadow: -4px 7px 20px 1px grey;
 }
-#resultado{
-    resize: none;
-    font-family: "IBM Plex Sans Thai";
-    font-size: 20px;
-    margin: 25px 25px;
-    border-radius: 10px;
-    border: none;
-    width: 50%;
-    box-shadow: -4px 7px 20px 1px grey;
+.box:focus{
+    outline-color: rgb(108, 186, 229);
+}
+footer{
+    position: fixed;
+    bottom: 0px;
+    transform: translateX(-50%);
+    left: 50%;
+    margin: 10px
 }
 .hidden{
     display: none;
+}
+
+@media(max-width:600px){
+
+    header{
+        justify-content: center;
+    }
+    header img{
+        width: 20%;
+    }
+    .container h3{
+        margin: 15px;
+        font-size: 13px;
+    }
+    .escolha{
+        flex-direction: column;
+    }
+    #select{
+        width: 100%;
+        margin: 10px 0px;
+    }
+    #incremento{
+        margin: 10px 0px;
+    }
+    .cifra{
+        margin: 0px;
+    }
+    .mensagem{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .box{
+        width: 80%;
+        height: 100px;
+        margin: 10px;
+    }
+    #button{
+        width: 35%;
+        padding: 5px;
+        font-size: 20px;
+    }
+    footer{
+        display: flex;
+        justify-content: center;
+        font-size: 12px;
+        width: 100%;
+    }
 }

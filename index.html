@@ -11,38 +11,36 @@
 
 <body>
     <header>
-       <img src="https://image.flaticon.com/icons/png/512/2105/2105124.png"/> decode
+        <img src="https://image.flaticon.com/icons/png/512/2105/2105124.png" /> decode
     </header>
-    <main >
-        <form class="container">
-            <h3>Escolha uma das opções de cifra para sua mensagem</h3>
-            <section class="escolha">
-                <select name="select" id="select">
-                    <option value="valor0" disabled selected>Escolha a cifra</option>
-                    <option value="cifra">Cifra de César</option>
-                    <option value="base">base64</option>
-                  </select>
-                  <input class="hidden" id="incremento" type="number" placeholder = "Insira o Incremento">
-                <div class="cifra">
-                    <input checked type="radio" id="cod" name="opcao">
-                    <label for="opcao">Codificar</label>
-                </div>
-                <div class="cifra">
-                    <input type="radio" id="decode" name="opcao">
-                    <label for="opcao">Decodificar</label>
-                </div>
-            </section>
+    <form class="container">
+        <h3>Escolha uma das opções de cifra para sua mensagem</h3>
+        <section class="escolha">
+            <select name="select" id="select">
+                <option value="valor0" disabled selected>Escolha a cifra</option>
+                <option value="cifra">Cifra de César</option>
+                <option value="base">base64</option>
+            </select>
+            <input class="hidden" id="incremento" type="number" placeholder="Insira sua chave">
+            <div class="cifra">
+                <input checked type="radio" id="cod" name="opcao">
+                <label for="opcao">Codificar</label>
+            </div>
+            <div class="cifra">
+                <input type="radio" id="decode" name="opcao">
+                <label for="opcao">Decodificar</label>
+            </div>
+        </section>
+        <section class="mensagem">
+            <textarea class="box" id="campo" name="boxtext" placeholder="Digite aqui sua mensagem" rows="10" cols="33"></textarea>
+            <textarea class="box"  id="resultado" name="boxtext" rows="10" cols="33" readonly></textarea>
+        </section>
+        <input id="button" type="submit" value="Code" onclick="">
+    </form>
 
-            <section class="mensagem">
-                <textarea id="campo" name="boxtext" placeholder="Digite aqui sua mensagem" rows="10" cols="33"></textarea>
-                <textarea id="resultado" name="boxtext" rows="10" cols="33"></textarea>
-            </section>
-            <input id="button" type="submit" value="Code" onclick="">
-        </form>
-    </main>
+    <footer>
+        <span>Copyright © 2021 - Desenvolvido por Bárbara Cruz.</span>
+    </footer>
     <script src="./js/decodificar.js"></script>
-
 </body>
-
 </html>
-

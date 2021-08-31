@@ -1,108 +1,98 @@
 var texto = document.querySelector('#campo');
-
 var select = document.querySelector('#select')
-
 var incremento = document.querySelector('#incremento')
-
 var radioCode = document.querySelector('#cod')
-
 var radioDecode = document.querySelector('#decode')
-
 var botao = document.getElementById('button')
 
-select.addEventListener('change',function(){
-    if(select.value == 'cifra'){
+select.addEventListener('change',function() {
+    if (select.value === 'cifra') {
         incremento.classList.remove('hidden');
-    }else if(select.value == 'base'){
+    } else {
         incremento.classList.add('hidden');
     }
 })
 
-radioCode.addEventListener('click', function(){
+radioCode.addEventListener('click', function() {
     botao.value = 'Code'
 })
 
-radioDecode.addEventListener('click', function(){
+radioDecode.addEventListener('click', function() {
     botao.value = 'Decode'
 })
 
-botao.addEventListener('click', function(e){
+botao.addEventListener('click', function(e) {
     e.preventDefault();
     let result = document.querySelector('#resultado');
     let valorTexto = texto.value;
-    if(radioCode.checked){
-        codificar(result, valorTexto)
-    }else{
-        decodificar(result, valorTexto)
+    let incrementoValor = parseInt(incremento.value)
+
+    if(incrementoValor < 1 || incrementoValor > 25){
+        alert('Insira uma chave válida entre 1 e 25.')
+    }
+
+    else if (radioCode.checked) {
+        codificar(result, valorTexto, incrementoValor)
+    } else {
+        decodificar(result, valorTexto, incrementoValor)
     }
 })
 
-function codificar(result, valorTexto){
+function codificar(result, valorTexto, incrementoValor) {
     if(select.value == 'cifra'){
         let arr = [];
 
-        for(var i = 0; i < valorTexto.length; i++){
-            if(valorTexto[i].charCodeAt() >= 65 && valorTexto[i].charCodeAt() <= 90){
-                arr.push(String.fromCharCode(
-                    ((valorTexto[i].charCodeAt() - 65 + parseInt(incremento.value))%26) + 65
-                ));
-            }else if(valorTexto[i].charCodeAt() >= 97 && valorTexto[i].charCodeAt() <= 122){
-                arr.push(String.fromCharCode(
-                    ((valorTexto[i].charCodeAt() - 97 + parseInt(incremento.value))%26) + 97
-                ));
-            }
-            else{
+        for (var i = 0; i < valorTexto.length; i++) {
+            const codigoLetra = valorTexto[i].charCodeAt()
+            if (codigoLetra >= 65 && codigoLetra <= 90) {
+                arr.push(retonarCharCodeCodificar(codigoLetra, 65, incrementoValor));
+            } else if (codigoLetra >= 97 && codigoLetra <= 122) {
+                arr.push(retonarCharCodeCodificar(codigoLetra, 97, incrementoValor));
+            } else {
                 arr.push(valorTexto[i])
             }
         }
-     result.value = arr.join('');
-    }else if(select.value == 'base'){
+        result.value = arr.join('');
+    } else if(select.value === 'base'){
         let base64 = btoa(texto.value);
         result.value = base64;
     }
 }
 
-function decodificar(result, valorTexto){
-    if(select.value === 'cifra'){
+function retonarCharCodeCodificar(codigoLetra, codAlfabeto, incrementoValor) {
+    return String.fromCharCode(((codigoLetra - codAlfabeto + incrementoValor)%26) + codAlfabeto)
+}
+
+function decodificar(result, valorTexto, incrementoValor) {
+    if (select.value === 'cifra') {
         let arr = [];
-        let incrementoValor = parseInt(incremento.value)
-        for(var i = 0; i < valorTexto.length; i++){
-            if(valorTexto[i].charCodeAt() >= 65 && valorTexto[i].charCodeAt() <= 90){
-                console.log(valorTexto[i].charCodeAt() - 65 - incrementoValor)
-                if(valorTexto[i].charCodeAt() - 65 - incrementoValor < 0) {
-                    arr.push(
-                        String.fromCharCode(
-                            ((valorTexto[i].charCodeAt() - 65 - incrementoValor + 26) % 26)+65
-                        )
-                    )
-                }else{
-                    arr.push(
-                        String.fromCharCode(
-                            ((valorTexto[i].charCodeAt() - 65 - incrementoValor) % 26) + 65
-                        )
-                    )
+        for (var i = 0; i < valorTexto.length; i++) {
+            const codigoLetra = valorTexto[i].charCodeAt()
+            if (codigoLetra >= 65 && codigoLetra <= 90) {
+                if (codigoLetra - 65 - incrementoValor < 0) {
+                    arr.push(retonarCharCodeDecodificar(codigoLetra, 65, incrementoValor, true))
+                } else {
+                    arr.push(retonarCharCodeDecodificar(codigoLetra, 65, incrementoValor))
                 }
-            }else if(valorTexto[i].charCodeAt() >= 97 && valorTexto[i].charCodeAt() <= 122){
-                if(valorTexto[i].charCodeAt() - 97 - incrementoValor < 0) {
-                    arr.push(
-                        String.fromCharCode(
-                            ((valorTexto[i].charCodeAt() - 97 - incrementoValor + 26) % 26)+97
-                        )
-                    )
-                }else{
-                    arr.push(
-                        String.fromCharCode(
-                            ((valorTexto[i].charCodeAt() - 97 - incrementoValor) % 26) + 97
-                        )
-                    )
+            }else if (codigoLetra >= 97 && codigoLetra <= 122) {
+                if (codigoLetra - 97 - incrementoValor < 0) {
+                    arr.push(retonarCharCodeDecodificar(codigoLetra, 97, incrementoValor, true))
+                } else {
+                    arr.push(retonarCharCodeDecodificar(codigoLetra, 97, incrementoValor))
                 }
-            }
-            else{
+            } else {
                 arr.push(valorTexto[i])
             }
         }
         result.value = arr.join('');
-    }else{
+    } else if(select.value === 'base') {
         result.value = atob(valorTexto);
     }
+}
+
+function retonarCharCodeDecodificar(codigoLetra, codAlfabeto, incrementoValor, negativo = false) {
+    if (negativo) {
+        return String.fromCharCode(((codigoLetra - codAlfabeto - incrementoValor + 26) % 26)+codAlfabeto)
+    }
+    return String.fromCharCode(((codigoLetra - codAlfabeto - incrementoValor) % 26) + codAlfabeto)
 }
